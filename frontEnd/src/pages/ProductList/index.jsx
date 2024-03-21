@@ -1,9 +1,13 @@
-import React from "react";
 import { Helmet } from "react-helmet";
 import { Text, Input, Img, Heading, Button, RatingBar, CheckBox } from "../../components";
 import Header from "../../components/Header";
+import ProductListing from './productListing';
+import CategoryList from "./categoryList";
+import { useParams } from "react-router-dom";
+
 
 export default function ProductListPage() {
+  const {id} = useParams();
   return (
     <>
       <Helmet>
@@ -35,44 +39,7 @@ export default function ProductListPage() {
                     Categories
                   </Text>
                   <div className="h-px w-full bg-blue_gray-100" />
-                </div>
-                <div className="flex flex-col items-start justify-start w-3/5 gap-[23px]">
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_sweater_gray_500.svg" alt="sweater_one" className="h-8 w-8" />
-                    <Text as="p">Jacket</Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_tshirt.svg" alt="tshirt_one" className="h-8 w-8" />
-                    <Text as="p" className="!text-gray-800">
-                      Shirt
-                    </Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_pants_gray_500.svg" alt="pants_one" className="h-8 w-8" />
-                    <Text as="p">Pants</Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_boot_gray_500.svg" alt="boot_one" className="h-8 w-8" />
-                    <Text as="p">Shoes</Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_dress_gray_500.svg" alt="dress_one" className="h-8 w-8" />
-                    <Text as="p">Dress</Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_belt_gray_500.svg" alt="belt_one" className="h-8 w-8" />
-                    <Text as="p">Accesories</Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_skirt_gray_500.svg" alt="skirt_one" className="h-8 w-8" />
-                    <Text as="p">Skirt</Text>
-                  </div>
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <Img src="images/img_arrow_down_gray_500.svg" alt="arrowdown_one" className="h-6 w-6" />
-                    <a href="#">
-                      <Text as="p">View more</Text>
-                    </a>
-                  </div>
+                  <CategoryList id={id}/>
                 </div>
               </div>
               <div className="h-px w-full bg-blue_gray-100" />
@@ -154,10 +121,10 @@ export default function ProductListPage() {
               <div className="flex flex-row justify-between w-full">
                 <Text as="p" className="!font-medium">
                   <span className="text-gray-500">Viewing </span>
-                  <span className="text-gray-800">20</span>
+                  <span className="text-gray-800">20 </span>
                   <span className="text-gray-500">of </span>
                   <span className="text-gray-800">160</span>
-                  <span className="text-gray-500">product</span>
+                  <span className="text-gray-500"> product</span>
                 </Text>
                 <div className="flex flex-row justify-start items-center gap-4">
                   <Text as="p" className="mt-px">
@@ -169,370 +136,10 @@ export default function ProductListPage() {
               </div>
               <div className="flex flex-col items-center justify-start w-full gap-[55px]">
                 <div className="flex flex-col items-center justify-start w-full">
-                  <div className="justify-center w-full gap-8 grid-cols-5 grid min-h-[auto]">
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img src="images/img_placeholder_3.png" alt="green_warm" className="w-[245px] object-cover" />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[67%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Green <br />
-                          Warm Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_1.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[67%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Black
-                          <br />
-                          Warm Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_shoes_isolated_pk7npbk.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[67%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Blue Grey <br />
-                          Warm Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_4.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[59%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Blue Denim <br />
-                          Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_mask_group_7.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[67%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Purple <br />
-                          Warm Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_2.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[46%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Casual <br />
-                          Pink Shirt
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_mask_group_6.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-3/5 gap-1.5">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Gray T-shirt
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-[15px]">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_250x250.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[58%] gap-[9px]">
-                        <Text size="md" as="p" className="!text-gray-800">
-                          Red Flannel
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_631x384.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[56%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Casual <br />
-                          Grey Shoes
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-3.5">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_sport_j9bzxuy.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[56%] gap-[9px]">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Pink Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_5.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[67%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Black <br />
-                          Warm Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_245x245.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[51%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Black
-                          <br />
-                          Brief Case
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_business_shirt_ptnj9lv.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[77%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Modern Classic
-                          <br />
-                          Watch
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_177x177.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[59%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Blue Denim <br />
-                          Skirt
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_23.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[71%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Casual <br />
-                          Classic Watch
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_24.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[81%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Black Adventure
-                          <br />
-                          Boots
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_6.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[65%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Black Formal
-                          <br />
-                          Highheels
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_travel_8v7cnke.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[68%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Brown <br />
-                          Casual Shoes
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_warm_pants_pxl7hrp.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[53%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Gray <br />
-                          Longpants
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start w-full gap-4">
-                      <div className="flex flex-col items-center justify-start h-[245px] w-[245px]">
-                        <Img
-                          src="images/img_placeholder_25.png"
-                          alt="placeholder_one"
-                          className="w-[245px] object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-[63%] gap-2">
-                        <Text size="md" as="p" className="!text-gray-800 text-center">
-                          Green
-                          <br />
-                          Sport Jacket
-                        </Text>
-                        <Text as="p" className="!font-medium">
-                          $299
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
+                    <ProductListing />
                 </div>
                 <div className="flex flex-row justify-between items-center w-[22%]">
-                  <Img src="images/img_chevron_down.svg" alt="chevrondown_one" className="h-6 w-6" />
+                  <Img src="/images/img_chevron_down.svg" alt="chevrondown_one" className="h-6 w-6 cursor-pointer" />
                   <div className="flex flex-row w-[68%] gap-6">
                     <div className="flex flex-col items-center justify-start h-[50px] w-1/4">
                       <Button className="min-w-[50px]">1</Button>
@@ -548,7 +155,7 @@ export default function ProductListPage() {
                       </Button>
                     </div>
                   </div>
-                  <Img src="images/img_chevron_down_gray_500.svg" alt="chevrondown" className="h-6 w-6" />
+                  <Img src="/images/img_chevron_down_gray_500.svg" alt="chevrondown" className="h-6 w-6 cursor-pointer" />
                 </div>
               </div>
             </div>

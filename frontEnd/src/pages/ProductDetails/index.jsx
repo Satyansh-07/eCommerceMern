@@ -1,9 +1,28 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Text, Input, Img, Heading, Button } from "../../components";
 import Header from "../../components/Header";
+import { useParams, useNavigate } from 'react-router-dom';
 
 export default function ProductDetailsPage() {
+  const [data, setData] = useState({});
+  let finalInfo, response;
+  let {pid} = useParams();
+  let navigate = useNavigate();
+  useEffect(() => {
+    try{  
+      async function fetchProductDetails(){
+        // throw new Error("THis is an error");
+        response = await fetch('http://localhost:1338/fetchProduct/' + pid);
+        finalInfo = await response.json();
+        setData(finalInfo);
+      }
+      fetchProductDetails();
+    }
+    catch(err){
+      navigate("/notFound");
+    }
+  }, [])
   return (
     <>
       <Helmet>
@@ -15,32 +34,26 @@ export default function ProductDetailsPage() {
         <div className="flex flex-col items-center justify-start w-full mt-[31px] gap-[181px] max-w-[1632px]">
           <div className="flex flex-row justify-start items-center w-full gap-8">
             <div className="flex flex-col items-center justify-start w-1/2 gap-8">
-              <div className="flex flex-row justify-center w-full">
-                <Img src="images/img_placeholder_523x800.png" alt="placeholder_one" className="w-full object-cover" />
-              </div>
-              <div className="flex flex-row w-[61%] gap-8">
-                <Img src="images/img_placeholder_137x139.png" alt="placeholder_one" className="w-[29%] object-cover" />
-                <Img src="images/img_placeholder_26.png" alt="placeholder_one" className="w-[29%] object-cover" />
-                <Img src="images/img_placeholder_27.png" alt="placeholder_one" className="w-[29%] object-cover" />
+              <div className="flex flex-row justify-center h-[400px] w-[400px]">
+                <Img src={data.image} alt="placeholder_one" className="w-full object-cover" />
               </div>
             </div>
             <div className="flex flex-col items-start justify-start w-1/2 gap-14">
               <div className="flex flex-col items-start justify-start w-full gap-[29px]">
-                <div className="flex flex-row justify-between w-[39%]">
+                <div className="flex flex-row justify-between">
                   <Text as="p" className="mb-0.5 !font-medium">
                     Featured
                   </Text>
-                  <Text as="p" className="!text-blue_gray-100 !font-medium">
+                  <Text as="p" className="!text-blue_gray-100 !font-medium mx-4">
                     {`>`}
                   </Text>
                   <Text as="p" className="!font-medium">
-                    Purple Warm Jacket
+                    {data.title}
                   </Text>
                 </div>
                 <div className="flex flex-col items-start justify-start w-full gap-[31px]">
-                  <Heading size="lg" as="h1" className="w-[49%]">
-                    Purple Warm <br />
-                    Zip Jacket
+                  <Heading size="lg" as="h1" className="w-[49%] line-clamp-3">
+                    {data.title}
                   </Heading>
                   <div className="flex flex-col items-start justify-start w-full gap-[31px]">
                     <Text size="lg" as="p">
@@ -72,7 +85,7 @@ export default function ProductDetailsPage() {
                         <div className="h-0.5 w-[90%] my-[3px] bg-gray-500" />
                       </div>
                       <Button size="sm" className="w-12">
-                        <Img src="images/img_increase.svg" />
+                        <Img src="/images/img_increase.svg" />
                       </Button>
                     </div>
                   </div>
@@ -80,7 +93,7 @@ export default function ProductDetailsPage() {
               </div>
               <Button
                 size="6xl"
-                rightIcon={<Img src="images/img_cart_white_a700.svg" alt="Cart" />}
+                rightIcon={<Img src="/images/img_cart_white_a700.svg" alt="Cart" />}
                 className="gap-4 font-bold min-w-[245px]"
               >
                 Add to Cart
@@ -100,14 +113,14 @@ export default function ProductDetailsPage() {
                 </a>
               </div>
               <div className="flex flex-row justify-start gap-4">
-                <Img src="images/img_arrow_blue_gray_100.svg" alt="arrow_one" className="h-12 w-12" />
-                <Img src="images/img_arrow_gray_800_48x48.svg" alt="arrow_three" className="h-12 w-12" />
+                <Img src="/images/img_arrow_blue_gray_100.svg" alt="arrow_one" className="h-12 w-12" />
+                <Img src="/images/img_arrow_gray_800_48x48.svg" alt="arrow_three" className="h-12 w-12" />
               </div>
             </div>
             <div className="flex flex-row w-full gap-8">
               <div className="flex flex-col items-center justify-center w-[24%] gap-3.5 px-14 py-[67px]">
                 <Img
-                  src="images/img_placeholder_1.png"
+                  src="/images/img_placeholder_1.png"
                   alt="black_briefcase"
                   className="w-[250px] mt-3.5 object-cover"
                 />
@@ -122,7 +135,7 @@ export default function ProductDetailsPage() {
               </div>
               <div className="flex flex-col items-center justify-center w-[24%] gap-3.5 px-14 py-[67px]">
                 <Img
-                  src="images/img_placeholder_24.png"
+                  src="/images/img_placeholder_24.png"
                   alt="placeholder_one"
                   className="w-[250px] mt-3.5 object-cover"
                 />
@@ -137,7 +150,7 @@ export default function ProductDetailsPage() {
               </div>
               <div className="flex flex-col items-center justify-center w-[24%] gap-4 px-14 py-[67px]">
                 <Img
-                  src="images/img_travel_8v7cnke.png"
+                  src="/images/img_travel_8v7cnke.png"
                   alt="placeholder_one"
                   className="w-[250px] mt-3.5 object-cover"
                 />
@@ -152,7 +165,7 @@ export default function ProductDetailsPage() {
               </div>
               <div className="flex flex-col items-center justify-center w-[24%] gap-[15px] px-14 py-[67px]">
                 <Img
-                  src="images/img_placeholder_2.png"
+                  src="/images/img_placeholder_2.png"
                   alt="placeholder_one"
                   className="w-[250px] mt-3.5 object-cover"
                 />
@@ -173,7 +186,7 @@ export default function ProductDetailsPage() {
             <div className="flex flex-row justify-between items-start w-full">
               <div className="flex flex-col items-start justify-start w-[26%] gap-[31px]">
                 <div className="flex flex-row justify-start items-start gap-2">
-                  <Img src="images/img_group_19_white_a700.svg" alt="image_one" className="h-6 mt-1" />
+                  <Img src="/images/img_group_19_white_a700.svg" alt="image_one" className="h-6 mt-1" />
                   <Heading as="h4" className="!text-white-A700">
                     Elliye{" "}
                   </Heading>
@@ -185,13 +198,13 @@ export default function ProductDetailsPage() {
                 </div>
                 <div className="flex flex-col items-center justify-start w-full gap-4">
                   <div className="flex flex-row justify-start items-center w-full gap-2 py-0.5">
-                    <Img src="images/img_call.svg" alt="call_one" className="h-6 w-6" />
+                    <Img src="/images/img_call.svg" alt="call_one" className="h-6 w-6" />
                     <Text as="p" className="!text-white-A700">
                       +1234567890
                     </Text>
                   </div>
                   <div className="flex flex-row justify-start items-center w-full gap-2">
-                    <Img src="images/img_email_white_a700.svg" alt="email_three" className="h-6 w-6" />
+                    <Img src="/images/img_email_white_a700.svg" alt="email_three" className="h-6 w-6" />
                     <Text as="p" className="mt-0.5 !text-white-A700">
                       elliye@support.com
                     </Text>
@@ -249,7 +262,7 @@ export default function ProductDetailsPage() {
                       placeholder="Enter your email"
                       suffix={
                         <div className="flex justify-center items-center w-[60px] h-[60px] bg-white-A700">
-                          <Img src="images/img_arrow_gray_800.svg" alt="Arrow" />
+                          <Img src="/images/img_arrow_gray_800.svg" alt="Arrow" />
                         </div>
                       }
                       className="w-full gap-3 tracking-[0.36px] border-white-A700 border"

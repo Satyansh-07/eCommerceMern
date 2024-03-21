@@ -8,10 +8,12 @@ export default function Header({ ...props }) {
 
   return (
     <header {...props}>
-      <div className="flex flex-row justify-start items-start ml-[120px] gap-2">
-        <Img src="images/img_group_19.svg" alt="image" className="h-6 mt-1" />
-        <Heading as="h4" className="cursor-pointer">Elliye </Heading>
-      </div>
+      <Link to="/">
+        <div className="flex flex-row justify-start items-start ml-[120px] gap-2">
+          <Img src="/images/img_group_19.svg" alt="image" className="h-6 mt-1" />
+          <Heading as="h4" className="cursor-pointer">Elliye </Heading>
+        </div>
+      </Link>
       <div className="flex flex-row justify-between w-3/5 mr-[120px]">
         <Input
           color="white_A700"
@@ -26,7 +28,7 @@ export default function Header({ ...props }) {
               {searchBarValue?.length > 0 ? (
                 <CloseSVG onClick={() => setSearchBarValue("")} height={18} width={18} />
               ) : (
-                <Img src="images/img_search_white_a700_18x18.svg" alt="search" className="cursor-pointer" />
+                <Img src="/images/img_search_white_a700_18x18.svg" alt="search" className="cursor-pointer" />
               )}
             </div>
           }
@@ -34,7 +36,7 @@ export default function Header({ ...props }) {
         />
         <div className="flex flex-row justify-between items-center">
           <Link to='/cart'>
-            <Img src="images/img_cart.svg" alt="cart_one" className="h-6 w-6 cursor-pointer mr-8" />
+            <Img src="/images/img_cart.svg" alt="cart_one" className="h-6 w-6 cursor-pointer mr-8" />
           </Link>
           <Link to="/login">
             <Button size="md" className="font-bold min-w-[107px]">

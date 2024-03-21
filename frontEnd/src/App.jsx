@@ -17,7 +17,6 @@ import {
 
 function App() {
   return (
-
     <ChakraBaseProvider>
       <Router>
         <Routes />

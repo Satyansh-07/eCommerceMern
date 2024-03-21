@@ -12,16 +12,21 @@ const ProjectRoutes = () => {
   let element = useRoutes([
     { path: "/", element: <Homepage /> },
     { path: "*", element: <NotFound /> },
+    { path: "/notFound", element: <NotFound /> },
     {
       path: "categorieswithsidebar",
       element: <CategorieswithSidebar />,
     },
     {
-      path: "productlist",
+      path: "productList/:id",
       element: <ProductList />,
     },
     {
-      path: "productdetails",
+      path: "productList",
+      element: <ProductList />,
+    },
+    {
+      path: "productdetails/:pid",
       element: <ProductDetails />,
     },
     {

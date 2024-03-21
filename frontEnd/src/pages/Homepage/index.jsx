@@ -4,6 +4,7 @@ import { Text, Input, Img, Heading, RatingBar, Button } from "../../components";
 import HeroCategory from './heroCategory';
 import ProductCard from '../../components/productCard.jsx';
 import Header from '../../components/Header';
+import { Link } from 'react-router-dom';
 
 
 export default function HomepageVThreePage() {
@@ -36,10 +37,10 @@ export default function HomepageVThreePage() {
         <div className="w-full">
           <Header className="flex flex-row justify-between items-center w-full p-6 bg-white-A700" />
           <div className="flex flex-row w-full py-4 gap-[96px] justify-center">
-            <HeroCategory categoryName="Men's Clothing" catImage={'img_tshirt_blue_gray_100'}/>
-            <HeroCategory categoryName="Women's Clothing" catImage={'img_dress_blue_gray_100'} />
-            <HeroCategory categoryName="Electronics" catImage={'img_belt_blue_gray_100'}/>
-            <HeroCategory categoryName="Jewelry" catImage={'Jewelry'}/>
+            <HeroCategory categoryName="Men's Clothing" catImage={'img_tshirt_blue_gray_100'} catID='1'/>
+            <HeroCategory categoryName="Women's Clothing" catImage={'img_dress_blue_gray_100'} catID='4'/>
+            <HeroCategory categoryName="Electronics" catImage={'img_belt_blue_gray_100'} catID='3'/>
+            <HeroCategory categoryName="Jewelry" catImage={'Jewelry'} catID='2'/>
           </div>
         </div>
         <div className="flex flex-col items-center justify-start w-full">
@@ -59,12 +60,14 @@ export default function HomepageVThreePage() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua.{" "}
                   </Text>
-                  <Button
-                    size="3xl"
-                    rightIcon={<Img src="images/img_arrow.svg" alt="Arrow" />}
-                    className="mt-20 gap-2.5 font-medium min-w-[245px]">
-                    Shop Now
-                  </Button>
+                  <Link to="/productList/0">
+                    <Button
+                      size="3xl"
+                      rightIcon={<Img src="images/img_arrow.svg" alt="Arrow" />}
+                      className="mt-20 gap-2.5 font-medium min-w-[245px]">
+                      Shop Now
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -276,145 +279,6 @@ export default function HomepageVThreePage() {
                 <Heading as="h6" className="mb-[158px] ml-[86px] !text-white-A700">
                   Why Choose Us
                 </Heading>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col items-center justify-start w-full mt-[103px] gap-7 max-w-[1630px]">
-            <div className="flex flex-row justify-between items-start w-full">
-              <Heading size="md" as="h2">
-                Popular this Week
-              </Heading>
-              <div className="flex flex-row justify-center mt-[9px]">
-                <a href="#">
-                  <Text as="p" className="!text-gray-800 !font-medium">
-                    View all
-                  </Text>
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-row w-full gap-8">
-              <div className="flex flex-col items-center justify-start w-[16%] gap-4">
-                <Img src="images/img_placeholder_6.png" alt="image" className="w-[245px] object-cover" />
-                <div className="flex flex-col items-center justify-start w-[81%] gap-4">
-                  <Text size="md" as="p" className="!text-gray-800 text-center">
-                    Black Adventure
-                    <br />
-                    Boots
-                  </Text>
-                  <RatingBar
-                    value={4}
-                    isEditable={true}
-                    color="#f6f7fb"
-                    activeColor="#fae952"
-                    size={16}
-                    className="flex justify-between w-28"
-                  />
-                  <Text as="p" className="!font-medium">
-                    $299
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-start w-[16%] gap-4">
-                <Img src="images/img_placeholder_177x177.png" alt="image" className="w-[245px] object-cover" />
-                <div className="flex flex-col items-center justify-start w-[65%] gap-4">
-                  <Text size="md" as="p" className="!text-gray-800 text-center">
-                    Black Formal
-                    <br />
-                    Highheels
-                  </Text>
-                  <RatingBar
-                    value={4}
-                    isEditable={true}
-                    color="#f6f7fb"
-                    activeColor="#fae952"
-                    size={16}
-                    className="flex justify-between w-28"
-                  />
-                  <Text as="p" className="!font-medium">
-                    $299
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-start w-[16%] gap-4">
-                <Img src="images/img_placeholder_250x250.png" alt="image" className="w-[245px] object-cover" />
-                <div className="flex flex-col items-center justify-start w-[68%] gap-4">
-                  <Text size="md" as="p" className="!text-gray-800 text-center">
-                    Brown <br />
-                    Casual Shoes
-                  </Text>
-                  <RatingBar
-                    value={4}
-                    isEditable={true}
-                    color="#f6f7fb"
-                    activeColor="#fae952"
-                    size={16}
-                    className="flex justify-between w-28"
-                  />
-                  <Text as="p" className="!font-medium">
-                    $299
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col items-start justify-start w-[16%] gap-4">
-                <Img src="images/img_travel_8v7cnke.png" alt="image" className="w-[245px] object-cover" />
-                <div className="flex flex-col items-center justify-start ml-[50px] gap-4">
-                  <Text size="md" as="p" className="!text-gray-800 text-center">
-                    Gray <br />
-                    Longpants
-                  </Text>
-                  <RatingBar
-                    value={4}
-                    isEditable={true}
-                    color="#f6f7fb"
-                    activeColor="#fae952"
-                    size={16}
-                    className="flex justify-between w-28"
-                  />
-                  <Text as="p" className="!font-medium">
-                    $299
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-start w-[16%] gap-4">
-                <Img src="images/img_mask_group_7.png" alt="image" className="w-[245px] object-cover" />
-                <div className="flex flex-col items-center justify-start w-[63%] gap-4">
-                  <Text size="md" as="p" className="!text-gray-800 text-center">
-                    Green
-                    <br />
-                    Sport Jacket
-                  </Text>
-                  <RatingBar
-                    value={4}
-                    isEditable={true}
-                    color="#f6f7fb"
-                    activeColor="#fae952"
-                    size={16}
-                    className="flex justify-between w-28"
-                  />
-                  <Text as="p" className="!font-medium">
-                    $299
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-start w-[16%] gap-4">
-                <Img src="images/img_placeholder_3.png" alt="image" className="w-[245px] object-cover" />
-                <div className="flex flex-col items-center justify-start w-[59%] gap-4">
-                  <Text size="md" as="p" className="!text-gray-800 text-center">
-                    Blue Denim <br />
-                    Skirt
-                  </Text>
-                  <RatingBar
-                    value={4}
-                    isEditable={true}
-                    color="#f6f7fb"
-                    activeColor="#fae952"
-                    size={16}
-                    className="flex justify-between w-28"
-                  />
-                  <Text as="p" className="!font-medium">
-                    $299
-                  </Text>
-                </div>
               </div>
             </div>
           </div>
