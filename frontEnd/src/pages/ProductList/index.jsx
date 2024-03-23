@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import ProductListing from './productListing';
 import CategoryList from "./categoryList";
 import { useParams } from "react-router-dom";
+import CategoryConstants from "../../constants/categoryConstants";
 
 
 export default function ProductListPage() {
@@ -17,15 +18,15 @@ export default function ProductListPage() {
       <div className="flex flex-col items-center justify-start w-full bg-white-A700">
         <Header className="flex flex-row justify-between items-center w-full p-6 bg-white-A700" />
         <div className="flex flex-col items-center justify-start w-full mt-[31px] gap-[51px] max-w-[1632px]">
-          <div className="flex flex-row justify-between w-[13%]">
+          <div className="flex flex-row justify-between">
             <Text as="p" className="!font-medium">
               Home
             </Text>
-            <Text as="p" className="!text-blue_gray-100 !font-medium">
+            <Text as="p" className="!text-blue_gray-100 !font-medium mx-4">
               {`>`}
             </Text>
             <Text as="p" className="!text-gray-800 !font-medium">
-              Product List
+              {((CategoryConstants || {}).categoryID[id] || {}).name}
             </Text>
           </div>
           <Heading size="md" as="h1">
@@ -50,8 +51,6 @@ export default function ProductListPage() {
                 <div className="flex flex-col items-start justify-start w-full gap-6">
                   <CheckBox name="allprice" label="All Price" className="gap-4 text-left" />
                   <CheckBox
-                    color="gray_800"
-                    variant="fill"
                     name="vector_eight"
                     label="$100 - $250"
                     className="gap-4 text-left"
@@ -67,34 +66,46 @@ export default function ProductListPage() {
                   Filter by Rating
                 </Text>
                 <div className="flex flex-col items-start justify-start w-full gap-4">
-                  <div className="flex flex-row justify-start w-[34%] gap-4">
-                    <div className="h-6 w-6 border-blue_gray-100 border-[3px] border-solid" />
-                    <div className="flex flex-col items-center justify-start h-6 w-6">
-                      <Img src="images/img_star_1_1.svg" alt="image_one" className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="flex flex-row justify-start w-1/2 gap-4">
-                    <div className="h-6 w-6 border-blue_gray-100 border-[3px] border-solid" />
-                    <div className="flex flex-row justify-start w-[59%] gap-2">
-                      <Img src="images/img_star_1_2.svg" alt="image_two" className="h-6 w-6" />
-                      <Img src="images/img_star_2_24x24.svg" alt="image_three" className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <RatingBar
-                    value={1}
-                    isEditable={true}
-                    color="#fae952"
-                    activeColor="#fae952"
-                    size={24}
-                    starCount={2}
-                    className="flex justify-between w-32"
-                  />
-                  <div className="flex flex-row justify-start gap-4">
-                    <Button size="xs" className="w-6">
-                      <Img src="images/img_checkedbox.svg" />
-                    </Button>
+                <div className="flex flex-row justify-start gap-4">
+                    <CheckBox name="rating_two" className="text-left" />
                     <RatingBar
-                      value={4}
+                      value={1}
+                      isEditable={true}
+                      color="#fae952"
+                      activeColor="#fae952"
+                      size={24}
+                      starCount={1}
+                      className="flex w-[120px]"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-start gap-4">
+                    <CheckBox name="rating_three" className="text-left" />
+                    <RatingBar
+                      value={2}
+                      isEditable={true}
+                      color="#fae952"
+                      activeColor="#fae952"
+                      size={24}
+                      starCount={2}
+                      className="flex justify-between w-[60px]"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-start gap-4">
+                    <CheckBox name="rating_three" className="text-left" />
+                    <RatingBar
+                      value={3}
+                      isEditable={true}
+                      color="#fae952"
+                      activeColor="#fae952"
+                      size={24}
+                      starCount={3}
+                      className="flex justify-between w-[90px]"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-start gap-4">
+                    <CheckBox name="rating_three" className="text-left" />
+                    <RatingBar
+                      value={3}
                       isEditable={true}
                       color="#fae952"
                       activeColor="#fae952"
@@ -104,7 +115,7 @@ export default function ProductListPage() {
                     />
                   </div>
                   <div className="flex flex-row justify-start w-full gap-4">
-                    <div className="h-6 w-6 border-blue_gray-100 border-[3px] border-solid" />
+                    <CheckBox name="rating_three" className="text-left" />
                     <RatingBar
                       value={5}
                       isEditable={true}
@@ -117,48 +128,7 @@ export default function ProductListPage() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-start w-[84%] gap-[29px]">
-              <div className="flex flex-row justify-between w-full">
-                <Text as="p" className="!font-medium">
-                  <span className="text-gray-500">Viewing </span>
-                  <span className="text-gray-800">20 </span>
-                  <span className="text-gray-500">of </span>
-                  <span className="text-gray-800">160</span>
-                  <span className="text-gray-500"> product</span>
-                </Text>
-                <div className="flex flex-row justify-start items-center gap-4">
-                  <Text as="p" className="mt-px">
-                    <span className="text-gray-500">Sort by: </span>
-                    <span className="text-gray-800">Newest Items</span>
-                  </Text>
-                  <Img src="images/img_arrow_down.svg" alt="arrowdown_three" className="h-6 w-6" />
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-start w-full gap-[55px]">
-                <div className="flex flex-col items-center justify-start w-full">
-                    <ProductListing />
-                </div>
-                <div className="flex flex-row justify-between items-center w-[22%]">
-                  <Img src="/images/img_chevron_down.svg" alt="chevrondown_one" className="h-6 w-6 cursor-pointer" />
-                  <div className="flex flex-row w-[68%] gap-6">
-                    <div className="flex flex-col items-center justify-start h-[50px] w-1/4">
-                      <Button className="min-w-[50px]">1</Button>
-                    </div>
-                    <div className="flex flex-col items-center justify-start h-[51px] w-[26%]">
-                      <Button color="gray_500" variant="outline" className="min-w-[51px]">
-                        2
-                      </Button>
-                    </div>
-                    <div className="flex flex-col items-center justify-start h-[51px] w-[26%]">
-                      <Button color="gray_500" variant="outline" className="min-w-[51px]">
-                        3
-                      </Button>
-                    </div>
-                  </div>
-                  <Img src="/images/img_chevron_down_gray_500.svg" alt="chevrondown" className="h-6 w-6 cursor-pointer" />
-                </div>
-              </div>
-            </div>
+            <ProductListing />
           </div>
         </div>
         <footer className="flex justify-center items-center w-full mt-[100px]">

@@ -38,9 +38,9 @@ export default function HomepageVThreePage() {
           <Header className="flex flex-row justify-between items-center w-full p-6 bg-white-A700" />
           <div className="flex flex-row w-full py-4 gap-[96px] justify-center">
             <HeroCategory categoryName="Men's Clothing" catImage={'img_tshirt_blue_gray_100'} catID='1'/>
-            <HeroCategory categoryName="Women's Clothing" catImage={'img_dress_blue_gray_100'} catID='4'/>
-            <HeroCategory categoryName="Electronics" catImage={'img_belt_blue_gray_100'} catID='3'/>
             <HeroCategory categoryName="Jewelry" catImage={'Jewelry'} catID='2'/>
+            <HeroCategory categoryName="Electronics" catImage={'img_belt_blue_gray_100'} catID='3'/>
+            <HeroCategory categoryName="Women's Clothing" catImage={'img_dress_blue_gray_100'} catID='4'/>
           </div>
         </div>
         <div className="flex flex-col items-center justify-start w-full">

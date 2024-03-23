@@ -35,7 +35,7 @@ export default function ProductDetailsPage() {
           <div className="flex flex-row justify-start items-center w-full gap-8">
             <div className="flex flex-col items-center justify-start w-1/2 gap-8">
               <div className="flex flex-row justify-center h-[400px] w-[400px]">
-                <Img src={data.image} alt="placeholder_one" className="w-full object-cover" />
+                <Img src={data.image} alt="placeholder_one" />
               </div>
             </div>
             <div className="flex flex-col items-start justify-start w-1/2 gap-14">
@@ -47,7 +47,7 @@ export default function ProductDetailsPage() {
                   <Text as="p" className="!text-blue_gray-100 !font-medium mx-4">
                     {`>`}
                   </Text>
-                  <Text as="p" className="!font-medium">
+                  <Text as="p" className="!font-medium line-clamp-1">
                     {data.title}
                   </Text>
                 </div>

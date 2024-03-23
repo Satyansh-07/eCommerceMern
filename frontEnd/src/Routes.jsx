@@ -22,10 +22,6 @@ const ProjectRoutes = () => {
       element: <ProductList />,
     },
     {
-      path: "productList",
-      element: <ProductList />,
-    },
-    {
       path: "productdetails/:pid",
       element: <ProductDetails />,
     },

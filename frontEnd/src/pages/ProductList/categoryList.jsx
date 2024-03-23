@@ -9,7 +9,7 @@ export default function CategoryList(props){
             <Category key={index} imgSrc={category.imgUrl} name={category.name} />)
             : Object.values((CategoryConstants || {}).categoryID).map((category, index) => {
                 if(category.id === parseInt(props.id)){
-                    return <Category key={index} imgSrc={category.imgUrl} name={category.name} />
+                    return <Category key={index}imgSrc={category.imgUrl} name={category.name} />
                 }
             })}
         </div>
