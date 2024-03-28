@@ -2,10 +2,12 @@ import React from "react";
 import { CloseSVG } from "../../assets/images";
 import { Button, Img, Input, Heading } from "./..";
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from "recoil";
+import {CartItemCount} from '../../state/atoms/atoms';
 
 export default function Header({ ...props }) {
   const [searchBarValue, setSearchBarValue] = React.useState("");
-
+  const currentCartItems = useRecoilValue(CartItemCount);
   return (
     <header {...props}>
       <Link to="/">
@@ -35,8 +37,11 @@ export default function Header({ ...props }) {
           className="w-[53%] gap-[35px] text-gray-500_87 border-gray-50 border-2"
         />
         <div className="flex flex-row justify-between items-center">
-          <Link to='/cart'>
-            <Img src="/images/img_cart.svg" alt="cart_one" className="h-6 w-6 cursor-pointer mr-8" />
+          <Link to='/cart' className="mr-8 relative">
+            <Img src="/images/img_cart.svg" alt="cart_one" className="h-6 w-6 cursor-pointer" />
+            {!!currentCartItems && <div className="rounded-full h-[14px] w-[14px] bg-gray-800 text-white-A700 text-[10px] text-center absolute right-[-2px] top-[-5px]">
+              {currentCartItems}
+            </div>}
           </Link>
           <Link to="/login">
             <Button size="md" className="font-bold min-w-[107px]">

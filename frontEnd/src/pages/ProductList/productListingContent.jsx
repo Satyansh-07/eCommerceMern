@@ -13,7 +13,7 @@ export default function ProductListingContent({id}){
     else if(productListingValue.state === 'hasValue'){
         return(
             <div className="justify-center w-full gap-8 grid-cols-3 grid min-h-[auto]">
-                {((productListingValue || {}).contents || []).map((product, index) => <ProductCard key={index} productImage={(product || {}).image} productTitle={(product || {}).title} price={(product || {}).price} pid={(product || {}).id}/>)}
+                {(((productListingValue || {}).contents || []).productList || []).map((product, index) => <ProductCard key={index} productCardId={(product || {}).id} productImage={(product || {}).image} productTitle={(product || {}).title} price={(product || {}).price} pid={(product || {}).id}/>)}
             </div>
         )
     }

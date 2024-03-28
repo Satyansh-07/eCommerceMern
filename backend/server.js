@@ -28,13 +28,14 @@ app.get('/featuredProducts', async (req, res) => {
 
 app.get('/category/:id', async (req, res) => {
   try{
-    let data;
+    let data = {};
     if(!parseInt(req.params.id)){
-      data = await productModel.find();
+      data.productList = await productModel.find();
     }
     else{
-      data = await productModel.find({categoryId : parseInt(req.params.id)}).exec();
+      data.productList = await productModel.find({categoryId : parseInt(req.params.id)}).exec();
     }
+    data.elementCount = (data.productList || []).length;
     res.send(data);
   }
   catch(err){

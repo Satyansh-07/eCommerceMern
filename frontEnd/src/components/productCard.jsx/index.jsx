@@ -2,16 +2,21 @@ import { Link } from "react-router-dom";
 import { Text, Img, Button} from "../../components";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CartItemCount, ProductCardState } from '../../state/atoms/atoms';
+import { useRecoilState } from "recoil";
 
 export default function ProductCard(props){
-    const [defaultBtnContent, setButtonContent] = useState({value: "Add to cart", isRedirect: false});
+    const prodId = (props || {}).productCardId;
+    const [currentCartCount, setCartElementCount] = useRecoilState(CartItemCount);
+    const [currentProdCartState, setCurrentProdCardState] = useRecoilState(ProductCardState(prodId))
     const navigate = useNavigate();
     function changeButtonTextFnc(){
-        if(!(defaultBtnContent || {}).isRedirect){
-            setButtonContent({value: "Go to cart", isRedirect: true});
+        if(!(currentProdCartState || {}).isRedirect){
+            setCurrentProdCardState({value: "Go to cart", isRedirect: true});
+            setCartElementCount(currentCartCount + 1);
         }
         else{
-            navigate("/cart")
+            navigate("/cart");
         }
     }
     return(
@@ -30,7 +35,7 @@ export default function ProductCard(props){
                     </Text>
                 </div>
             </Link> 
-            <Button className="p-4 text-sm text-white-A700 bg-gray-800 relative z-10" onClick={changeButtonTextFnc}>{(defaultBtnContent || {}).value}</Button>
+            <Button className="p-4 text-sm text-white-A700 bg-gray-800 relative z-10" onClick={changeButtonTextFnc}>{(currentProdCartState || {}).value}</Button>
         </div>
     )
 }

@@ -1,5 +1,8 @@
 import { selectorFamily } from "recoil";
 
+
+// this selector is used to fetch the data for product listing page
+// fetches the initial list of products to be displayed based on ID
 export const productListingSelector = selectorFamily({
     key: "ProductListingSelector",
     get: (id) => async () => {
@@ -18,4 +21,6 @@ export const productListingSelector = selectorFamily({
             console.log('Error found', err);
         }
     }
-})
+});
+
+//
